@@ -1,0 +1,63 @@
+#right{
+    height:100vh;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+.g-3{
+    margin-top: 30px;
+}
+
+#search_bar{
+    margin-left:25px ;
+    width: 1100px;
+    height: 47px;
+}
+
+.post {
+    margin-top: 20px;
+    height:75px;
+    border-radius: 25px;
+    padding:10px;
+    border: 0.5px solid black;
+    box-shadow: 0px 10px 10px grey;
+}
+
+.user{
+    float: left;
+    margin-left: 25px;
+    margin-top:15px;
+}
+
+.request{
+    float: right;
+    margin-right: 25px;
+    margin-top:6px;
+}
+
+.text-col{
+    color: white;
+}
+
+.req-active{
+    color:black;
+    background-color: white;
+    border-color: black;
+}
+
+.req-active:hover{
+    background-color: white;
+}
+
+h1{
+    text-align: center;
+    margin-top: 25px;
+}
+
+#not-found{
+    color:rgb(198, 195, 195);
+}
+
+.default-following{
+    margin-top: 100px;
+    text-align: center;
+}

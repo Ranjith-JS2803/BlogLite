@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="../static/myfeed.css">
+    <title>My Feed</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="left" class="col-2">
+                <div class="heading">
+                    <h2>Blog Lite</h2>
+                </div>
+                <div>
+                    <img src="/{{profile_pic}}"/>
+                </div>
+                <a href="/profile/{{user_name}}"><i class="bi bi-person-lines-fill">&nbsp;&nbsp;Profile</i></a>
+                <a href="/myfeed/{{user_name}}" class="active"><i class="bi bi-house-fill">&nbsp;&nbsp;Home</i></a>
+                <a href="/search/{{user_name}}"><i class="bi bi-search">&nbsp;&nbsp;Search</i></a>
+                <a href="/"><i class="bi bi-box-arrow-left">&nbsp;&nbsp;Logout</i></a>
+            </nav>
+            <div id="right" class="col-10">
+                <div><h4>MY FEED</h4></div>
+
+                <div class="row">
+                    {%if following_list|length != 0 %}
+                    {%for obj in following_list%}
+                    <div class="col-6 post">
+                        <strong>Title : </strong>{{obj[1].title}} <br><br>
+                        <strong>Owner : </strong><a href="/friend_profile/{{user_name}}/{{obj[0].user_name}}">{{obj[0].user_name}}</a><br><br>
+                        <div>
+                            <button class="btn btn-primary read"><a href="/readblog/{{user_name}}/{{obj[1].blog_id}}" class="text-col">Read</a></button>
+                        </div>
+                    </div>  
+                    {%endfor%}
+                    {%else%}
+                    <div class="col-12">
+                        Follow friends to fill your feed with blogs
+                    </div>                                                    
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

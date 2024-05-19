@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: BLOG API
+  description: Blog CRUD Operations
+servers:
+  - url: http://localhost:5050
+paths:
+  /api/blog/{blog_id}:
+    description: End point to read, update and delete a blog.
+    get:
+      description: Operation to get Blog details.
+      parameters:
+        - in: path
+          name: blog_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Invalid Blog ID
+    put:
+      description: Operation to update Blog description and blog content.
+      parameters:        
+        - in: path
+          name: blog_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                blog_description:
+                  type: string
+                blog_content:
+                  type: string  
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Invalid Blog ID
+    delete:
+      description: Operation to delete a Blog.
+      parameters:
+        - in: path
+          name: blog_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Invalid Blog ID 
+
+  /api/create_blog:
+    description: End point to create a blog.
+    post:
+      description: Operation to create a Blog.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                blog_title:
+                  type: string
+                blog_description:
+                  type: string
+                blog_content:
+                  type: string
+                blog_owner_id:
+                  type: integer
+                blog_image:
+                  type: string
+                  format: binary
+
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Invalid Blog ID
